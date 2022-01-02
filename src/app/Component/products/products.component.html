@@ -1,0 +1,41 @@
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of newProductList ">
+      <!-- <div class="card col-md-3" [ngStyle]="{'box-shadow': '5px 10px #888888','border': '1px solid green','margin':'8px','padding':'8px'}" appMakeshadow> -->
+      <div class="card col-md-3 m-2 p-2" appMakeshadow>
+        <img src="{{item.Img}}" alt="">
+        <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;color: red;">{{item.Name}}</h5>
+        <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+          {{item.Quantity}} items found
+        </p>
+        <div class="needquantity" style="width:200px;height:40px;margin: 20px;position: relative;" *ngIf="item.Quantity>0; ">
+            <input type="number" name="needquantity" min="0" max="{{item.Quantity}}" style="width:100%;height:100%"
+              placeholder="enter need quantity"  #needquantity >
+
+                <!-- <button class="tab-button" style="width:20px;height:20px; background-color:red;font-size:20px;margin: 10px;"
+                                    (click)="increaseNeedQuantity(item,needquantity.value)">+</button>
+                <button class="tab-button" style="width:20px;height:20px; background-color:red;font-size:20px;"
+                                    (click)="decreaseNeedQuantity(item,needquantity.value)">-</button> -->
+
+                <div  style="width:20px;height:20px;font-size:30px;cursor: pointer;position:absolute;top: -5px;right: -20px;"
+                  (click)="updateshopincard(item,needquantity.value,'+')">+</div>
+                <div  style="width:20px;height:20px;font-size:35px;cursor: pointer;position:absolute;top:-5px;left: -20px;"
+                  (click)="updateshopincard(item,needquantity.value,'-')">-</div>
+        </div>
+        <p><strong>Price:</strong> {{item.Price| currency:'EGP':'code'}}</p>
+        <!-- <div *ngIf="item.Quantity>0; else outOfStock">
+              <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
+        </div> -->
+        <ng-template #outOfStock> Out of Stock</ng-template>
+        <button class="btn btn-primary" style="width:200px;margin: 10px;" (click)="openProductDetails(item.id,newProductList.length)">details_by_button_fun</button>
+        <!-- <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button> -->
+      </div>
+    </ng-container>
+  </div>
+</div>
+<!-- <input type="number" placeholder="enter date"> <button>get date</button> -->
+<!-- <div>the date is {{ mydate | getfulldate }}</div> -->
+<!-- <input type="number" placeholder="enter creditcard"> <button>get creditcard</button> -->
+<!-- <div>the creditcard is {{ mycreditcard | creditcard }}</div> -->
+<!-- <h2>Time Now: {{todayDate | date:'medium'}}</h2> -->

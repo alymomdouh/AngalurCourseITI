@@ -1,0 +1,44 @@
+
+<table class="table table-bordered table-inverse ">
+    <thead class="thead-inverse">
+        <tr>
+            <th>#n</th>
+            <th>product name</th>
+            <th>product Quantity </th>
+            <th>product Price </th>
+            <th>product Img </th>
+            <th>product CateogryID </th>
+            <th>product rate </th>
+            <th>delete product </th>
+            <th>alter product </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of ProductList;let i=index">
+                <!-- newProductList -->
+                <td scope="row">{{++i}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Quantity}}</td>
+                <td>{{item.Price}}</td>
+                <td>
+                    <img src="{{item.Img}}">
+                </td>
+                <td>{{item.CateogryID}}</td>
+                <td>{{item.rate}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="deleteproduct(item.id)">
+                        <i class="fa fa-recycle" aria-hidden="true"></i> delete product
+                    </button>
+                </td>
+              <td>
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" >
+                        <i class="fas fa-edit"></i>Edite product
+                    </button> -->
+                    <a class="btn btn-primary btn-lg btn-block" routerLink="/product/edite/{{item.id}}" routerLinkActive="active">
+                      <i class="fas fa-edit"></i>Edite product
+                    </a>
+                </td>
+            </tr>
+            
+        </tbody>
+</table>

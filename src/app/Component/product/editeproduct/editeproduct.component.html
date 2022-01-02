@@ -1,0 +1,43 @@
+<h1>Edite Product </h1>
+<form #form="ngForm" (ngSubmit)="updateProduct()"> 
+  <fieldset>
+    <div class="form-group">
+      <label>product Name</label>
+        <input type="text" #prdname #productname="ngModel" [class.is-valid]="productname.valid"
+        [class.is-invalid]="productname.invalid" class="form-control" required minlength="3"
+        [(ngModel)]="product.Name" [ngModelOptions]="{standalone:true}"> 
+        <div [hidden]="productname.valid || productname.pristine" class="alert alert-danger">  
+        Name is required
+        <!-- [pristine] is when change ,[touched]-->
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>product Quantity</label>
+      <!-- [ngModelOptions]="{standalone:true}" put because error in console  -->
+        <input type="number" class="form-control" required min="1" [(ngModel)]="product.Quantity"  
+          [ngModelOptions]="{standalone:true}">  
+    </div>
+    <div class="form-group">
+      <label>product Price</label>
+      <input type="number" class="form-control" required min="1" [(ngModel)]="product.Price"
+        [ngModelOptions]="{standalone:true}">
+    </div>
+  </fieldset>
+  <div class="form-group">
+    <label>CateogryID</label>
+    <select class="form-control" required [(ngModel)]="product.CateogryID" [ngModelOptions]="{standalone:true}">
+      <option value="">Please select a Cateogry name</option>
+      <option *ngFor="let catg of ICategorylist" [value]="catg.id">
+        {{catg.Name}}
+      </option>
+    </select>
+  </div>
+  <br>
+  <input type="submit" value="submit" class="btn btn-primary" [hidden]="form.invalid">
+  <br> <br>
+</form>
+<br>
+<!-- {{newproduct|json }}
+    <br>
+    {{prdname.className }} -->

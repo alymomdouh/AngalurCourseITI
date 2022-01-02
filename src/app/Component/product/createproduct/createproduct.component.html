@@ -1,0 +1,46 @@
+<!-- <p>createproduct works!</p>
+<button type="button" class="btn btn-primary" (click)="CreateNewProduct()">Create</button> -->
+
+<form #form="ngForm"  (ngSubmit)="CreateNewProduct()">
+  <!-- #form="ngForm"   #productname="ngModel"   is casting as input html -->
+  <fieldset>
+    <div class="form-group">
+      <label>product Name</label>
+      <input type="text" #prdname  #productname="ngModel" [class.is-valid]="productname.valid" [class.is-invalid]="productname.invalid" class="form-control" required minlength="3" [(ngModel)]="newproduct.Name" [ngModelOptions]="{standalone:true}">
+      <div [hidden]="productname.valid || productname.pristine" class="alert alert-danger">
+        Name is required    <!-- [pristine] is when change ,[touched]-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>product Quantity</label>
+      <!-- [ngModelOptions]="{standalone:true}" put because error in console  -->
+      <input type="number" class="form-control" required min="1" [(ngModel)]="newproduct.Quantity" [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label>product Price</label>
+      <input type="number" class="form-control" required min="1" [(ngModel)]="newproduct.Price" [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label for="prodimg">product image</label>
+      <img [src]="selectedimg" width="250px" height="200px">
+      <input type="file" #uploadedimg name="prodimg" (change)="onfileselected($event)" accept="image/*">
+      <button (click)="uploadtheimg()">upload the image</button>
+    </div>
+  </fieldset>
+  <div class="form-group">
+    <label>CateogryID</label>
+    <select class="form-control" required [(ngModel)]="newproduct.CateogryID" [ngModelOptions]="{standalone:true}">
+      <option value="">Please select a Cateogry name</option>
+      <option *ngFor="let catg of ICategorylist" [value]="catg.id"  >
+        {{catg.Name}}
+      </option>
+    </select>
+  </div>
+  <br>
+  <input type="submit" value="submit" class="btn btn-primary" [hidden]="form.invalid">
+  <br>  <br>
+</form>
+<br>
+    <!-- {{newproduct|json }}
+    <br>
+    {{prdname.className }} -->

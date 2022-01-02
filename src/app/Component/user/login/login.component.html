@@ -1,0 +1,23 @@
+<form [formGroup]="loginform">
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="email" formControlName="email" [class.is-valid]="loginform.controls['email'].valid"
+                        [class.is-invalid]="loginform.controls['email'].invalid"  class="form-control" id="inputEmail"
+                        placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Password</label>
+    <input type="password" formControlName="password" [class.is-valid]="loginform.controls['password'].valid"
+                        [class.is-invalid]="loginform.controls['password'].invalid"  class="form-control" id="inputPassword"
+                          placeholder="Password">
+  </div>
+  <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary">Sign in</button>
+</form>
+<hr>
+<br>
+{{loginform.value|json}}
+<br>
+<hr>
+
+<button type="button" [disabled]="isUsrLogged" class="btn btn-primary m-3" (click)="login()">Login </button>
+<button type="button" [disabled]="!isUsrLogged" class="btn btn-primary m-3" (click)="logout()">Logout </button>

@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="product?.Img" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Product Name:{{product.id}} - {{product?.Name}}</h5>
+    <div class="card-text">
+      <h6>Product Price: {{product?.Price}}</h6>
+      <h6>Available Quantity: {{product?.Quantity}}</h6>
+    </div>
+  </div>
+</div>
+<hr>
+<button [disabled]="product.id==1" type="button" class="btn btn-primary m-3" (click)="prevProduct()">Previous product </button>
+<button [disabled]="product.id==(productcount-1)" type="button" class="btn btn-primary m-3" (click)="nextProduct()">Next product </button>
+<br>
+<button [disabled]="product.id==1||startslider" type="button" class="btn btn-primary m-3" (click)="prevProductincategory()">Previous product in same category</button>
+<button [disabled]="product.id==(productcount-1)||endslider" type="button" class="btn btn-primary m-3" (click)="nextProductincategory()">Next product in same category </button>
+<hr>
+<button type="button" class="btn btn-primary m-3" (click)="goBackallproducts()">Go back view all products</button>
+

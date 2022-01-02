@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/products" routerLinkActive="active" >Product</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/contactus" routerLinkActive="active">contact us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/aboutus" routerLinkActive="active">about us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/user/Myprofile" routerLinkActive="active"> UserProfile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/user/Editprofile" routerLinkActive="active">UserEditProfile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [hidden]="isuserLoggedin"  routerLink="/user/login" routerLinkActive="active">UserLogin</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [hidden]="!isuserLoggedin"  routerLink="/user/login" routerLinkActive="active">UserLogout</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"   routerLink="/user/cart" routerLinkActive="active">UserCart</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/product/create" routerLinkActive="active">CreateNewProduct</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/product/allproducts" routerLinkActive="active">view all products  </a>
+                  </li>
+                  
+            </ul>
+        </div>
+    </div>
+</nav>

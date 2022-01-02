@@ -1,0 +1,64 @@
+
+
+
+<header>
+  <div class="navbar navbar-dark bg-primary shadow-sm">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px;" class="fas fa-shipping-fast">&nbsp;
+
+      </i>
+      <!-- <strong style="font-size: 30px;">souq</strong> -->
+      <!-- <div class="form-group">
+        <input type="text" class="form-control" placeholder="search products">
+      </div>
+      <span class="fas fa-search search-icon"></span> -->
+      <div style="background-color: aqua;color: black;">
+        total cart price is{{totalcartprice}}
+      </div>
+    </div>
+    <button  class="btn btn-primary" routerLink="/user/cart">
+      <span >{{totalcartitem}}</span>
+      <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+    </button>
+  </div>
+  <div class="card-top container-fluid">
+    <div class="container d-flex">
+      <label for="categories">categories</label>
+      <!-- <select name="categoriesid" #mySelect  (change)='onOptionsSelected(mySelect.value)'> -->
+        <select name="categoriesid"   [(ngModel)]="selectedCatIDinheader">
+          <option value="0">view all</option>
+        <option *ngFor="let catg of categories; let i = index" [value]="categories[i].id">
+          {{categories[i].Name}}
+        </option>
+      </select>
+    </div>
+  </div>
+</header>
+<!-- <h1>ssss {{SelectedCategory}}</h1> -->
+<div class="row">
+  <!-- <app-products [SelectedCategory]="SelectedCategory"></app-products> -->
+  <!--[whenchangemycard ] fun in child ,[whenchangemycardparent] fun in parent  -->
+  <app-products [SelectedCategory]="selectedCatIDinheader" (whenchangemycard)="whenchangemycardparent($event)"></app-products>
+</div>
+<div class="w-100 h-1 bg-primary text-center">this is the cart</div>
+<div class="tablecard">
+  <table class="table table-bordered table-inverse ">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>product name</th>
+        <th>product price</th>
+        <th>product quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let product of headercard; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{product.Name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+        </tr>
+
+      </tbody>
+  </table>
+</div>
