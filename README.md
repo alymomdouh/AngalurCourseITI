@@ -1,3 +1,5 @@
+this is simple only frontend ecommerce application in angular to make the crud operation for add ,update and delete the cart 🛒 using api service not have backend and database use the application [json server for save database ]
+<hr>
 # Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
